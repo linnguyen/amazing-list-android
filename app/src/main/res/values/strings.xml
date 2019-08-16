@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Amazing List</string>
+    <string name="web_view">Web View</string>
 </resources>

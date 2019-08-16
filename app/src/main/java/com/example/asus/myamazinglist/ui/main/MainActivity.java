@@ -13,6 +13,7 @@ import com.example.asus.myamazinglist.adapters.DataVerticalAdapter;
 import com.example.asus.myamazinglist.model.Data1;
 import com.example.asus.myamazinglist.model.Data2;
 import com.example.asus.myamazinglist.ui.webview.WebViewActivity;
+import com.example.asus.myamazinglist.utils.Constants;
 
 import java.util.List;
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     @Override
     public void onClick(Data1 data1) {
         Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
+        intent.putExtra(Constants.ARG_DATA, data1);
         startActivity(intent);
     }
 }
