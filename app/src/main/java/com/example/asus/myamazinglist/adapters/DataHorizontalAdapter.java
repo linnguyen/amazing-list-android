@@ -10,13 +10,13 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.asus.myamazinglist.R;
-import com.example.asus.myamazinglist.model.Movie;
+import com.example.asus.myamazinglist.model.Data1;
 
 import java.util.List;
 
 public class DataHorizontalAdapter extends RecyclerView.Adapter<DataHorizontalAdapter.HorizontalViewHolder> {
     private Context mContext;
-    private List<Movie> mData;
+    private List<Data1> mData;
     private HorizontalAdapterOnClickHandler mOnClickHandler;
 
     public DataHorizontalAdapter(Context context, HorizontalAdapterOnClickHandler onClickHandler) {
@@ -24,7 +24,7 @@ public class DataHorizontalAdapter extends RecyclerView.Adapter<DataHorizontalAd
         mOnClickHandler = onClickHandler;
     }
 
-    public void setData(List<Movie> lstData) {
+    public void setData(List<Data1> lstData) {
         mData = lstData;
         notifyDataSetChanged();
     }
@@ -32,15 +32,15 @@ public class DataHorizontalAdapter extends RecyclerView.Adapter<DataHorizontalAd
     @Override
     public HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_row_horizontal, parent, false);
+                .inflate(R.layout.item_horizontal, parent, false);
         return new HorizontalViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(HorizontalViewHolder holder, int position) {
-        Movie movie = mData.get(position);
+        Data1 data = mData.get(position);
         Glide.with(mContext)
-                .load(movie.getPosterPath())
+                .load(data.getImage())
                 .apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.image_placeholder)
                 .into(holder.thumbnail);
@@ -70,6 +70,6 @@ public class DataHorizontalAdapter extends RecyclerView.Adapter<DataHorizontalAd
     }
 
     public interface HorizontalAdapterOnClickHandler {
-        void onClick(Movie movie);
+        void onClick(Data1 data1);
     }
 }

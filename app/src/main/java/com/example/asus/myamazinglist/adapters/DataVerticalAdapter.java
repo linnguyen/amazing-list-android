@@ -10,19 +10,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.myamazinglist.R;
-import com.example.asus.myamazinglist.model.Movie;
+import com.example.asus.myamazinglist.model.Data2;
 
 import java.util.List;
 
 public class DataVerticalAdapter extends RecyclerView.Adapter<DataVerticalAdapter.VerticalViewHolder> {
     private Context mContext;
-    private List<Movie> mData;
+    private List<Data2> mData;
 
     public DataVerticalAdapter(Context context) {
         this.mContext = context;
     }
 
-    public void setData(List<Movie> lstData) {
+    public void setData(List<Data2> lstData) {
         mData = lstData;
         notifyDataSetChanged();
     }
@@ -30,17 +30,17 @@ public class DataVerticalAdapter extends RecyclerView.Adapter<DataVerticalAdapte
     @Override
     public VerticalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_row, parent, false);
+                .inflate(R.layout.item_vertical, parent, false);
 
         return new VerticalViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(VerticalViewHolder holder, int position) {
-        Movie movie = mData.get(position);
-        holder.tvTitleMovie.setText(movie.getTitle());
+        Data2 data = mData.get(position);
+        holder.tvTitleMovie.setText(data.getTitle());
         Glide.with(mContext)
-                .load(movie.getPosterPath())
+                .load(data.getThumbNail())
                 .placeholder(R.drawable.image_placeholder)
                 .into(holder.imvThumbnail);
     }
