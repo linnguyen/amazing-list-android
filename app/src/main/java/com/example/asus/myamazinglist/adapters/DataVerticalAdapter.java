@@ -41,7 +41,7 @@ public class DataVerticalAdapter extends RecyclerView.Adapter<DataVerticalAdapte
         holder.tvTitleMovie.setText(data.getTitle());
         Glide.with(mContext)
                 .load(data.getThumbNail())
-                .placeholder(R.drawable.image_placeholder)
+                .placeholder(R.drawable.rectangular_image_placeholder)
                 .into(holder.imvThumbnail);
     }
 

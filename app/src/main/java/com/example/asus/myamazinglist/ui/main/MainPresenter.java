@@ -2,6 +2,7 @@ package com.example.asus.myamazinglist.ui.main;
 
 import android.content.Context;
 
+import com.example.asus.myamazinglist.R;
 import com.example.asus.myamazinglist.model.Data1;
 import com.example.asus.myamazinglist.model.Data2;
 import com.example.asus.myamazinglist.network.RestClient;
@@ -82,9 +83,9 @@ public class MainPresenter implements MainPresenterInterface {
     }
 
     private Observable getHorizontalDataObservable() {
-        // data for horizontal list will be refreshed after 60 seconds
+        // horizontal list will be refreshed after 60 seconds
         return Observable
-                .interval(0, 60, TimeUnit.SECONDS)
+                .interval(0, mContext.getResources().getInteger(R.integer.number_of_second_refresh_list), TimeUnit.SECONDS)
                 .flatMap(new Function<Long, ObservableSource<?>>() {
                     @Override
                     public ObservableSource<?> apply(Long aLong) {

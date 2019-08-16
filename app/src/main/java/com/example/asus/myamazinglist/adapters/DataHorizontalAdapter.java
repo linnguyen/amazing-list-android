@@ -42,7 +42,7 @@ public class DataHorizontalAdapter extends RecyclerView.Adapter<DataHorizontalAd
         Glide.with(mContext)
                 .load(data.getImage())
                 .apply(RequestOptions.circleCropTransform())
-                .placeholder(R.drawable.image_placeholder)
+                .placeholder(R.drawable.circle_image_placeholder)
                 .into(holder.thumbnail);
     }
 

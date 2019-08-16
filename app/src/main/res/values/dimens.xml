@@ -9,4 +9,5 @@
     <dimen name="item_padding">10dp</dimen>
     <dimen name="thumbnail">80dp</dimen>
     <dimen name="divider_height">2dp</dimen>
+    <integer name="number_of_second_refresh_list">60</integer>
 </resources>

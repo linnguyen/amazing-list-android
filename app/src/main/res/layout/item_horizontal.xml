@@ -8,7 +8,6 @@
         android:layout_width="@dimen/thumbnail"
         android:layout_height="@dimen/thumbnail"
         android:layout_marginRight="@dimen/row_margin_right"
-        android:padding="@dimen/item_padding"
-        android:src="@drawable/image_placeholder" />
+        android:padding="@dimen/item_padding" />
 
 </RelativeLayout>

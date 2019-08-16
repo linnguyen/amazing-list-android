@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.asus.myamazinglist.R;
@@ -20,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MainViewInterface,
         DataHorizontalAdapter.HorizontalAdapterOnClickHandler {
     public static final String TAG = MainActivity.class.getSimpleName();
+    private Toolbar toolbar;
     private RecyclerView rcvVertical;
     private RecyclerView rcvHorizontal;
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
         presenter = new MainPresenter(getApplicationContext(), this);
 
+        toolbar = findViewById(R.id.toolbar);
         rcvVertical = findViewById(R.id.rcv_vertical);
         rcvHorizontal = findViewById(R.id.rcv_horizontal);
 
@@ -86,5 +89,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
         intent.putExtra(Constants.ARG_DATA, data1);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
