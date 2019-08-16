@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         mVerticalAdapter = new DataVerticalAdapter(getApplicationContext());
         mHorizontalAdapter = new DataHorizontalAdapter(getApplicationContext(), this);
 
-        rcvVertical.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rcvVertical.setLayoutManager(new LinearLayoutManager(this));
         rcvHorizontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         rcvVertical.setAdapter(mVerticalAdapter);
         rcvHorizontal.setAdapter(mHorizontalAdapter);
 
-        //mock data from json file
+        //get mock data from json file
         getData();
     }
 

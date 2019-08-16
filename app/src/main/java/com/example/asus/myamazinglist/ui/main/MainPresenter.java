@@ -83,8 +83,9 @@ public class MainPresenter implements MainPresenterInterface {
 
     private Observable getHorizontalDataObservable() {
         // data for horizontal list will be refreshed after 60 seconds
-        return Observable.interval(0, 10, TimeUnit.SECONDS).
-                flatMap(new Function<Long, ObservableSource<?>>() {
+        return Observable
+                .interval(0, 60, TimeUnit.SECONDS)
+                .flatMap(new Function<Long, ObservableSource<?>>() {
                     @Override
                     public ObservableSource<?> apply(Long aLong) {
                         return RestClient.getClient(mContext).getData1(Constants.api_key);

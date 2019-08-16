@@ -36,7 +36,7 @@ public class FakeInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        List<String> listSuggestionFileName = new ArrayList<>();
+        List<String> lstSuggestionFileName = new ArrayList<>();
         String method = chain.request().method().toLowerCase();
 
         Response response = null;
@@ -47,11 +47,11 @@ public class FakeInterceptor implements Interceptor {
         String defaultFileName = getFileName(chain);
 
         //create file name with http method
-        listSuggestionFileName.add(method + upCaseFirstLetter(defaultFileName));
+        lstSuggestionFileName.add(method + upCaseFirstLetter(defaultFileName));
 
-        listSuggestionFileName.add(defaultFileName);
+        lstSuggestionFileName.add(defaultFileName);
 
-        String responseFileName = getFirstFileNameExist(listSuggestionFileName, uri);
+        String responseFileName = getFirstFileNameExist(lstSuggestionFileName, uri);
         if (responseFileName != null) {
             String fileName = getFilePath(uri, responseFileName);
             Log.d(TAG, "Read data from file: " + fileName);
@@ -76,13 +76,11 @@ public class FakeInterceptor implements Interceptor {
                 Log.e(TAG, e.getMessage(), e);
             }
         } else {
-            for (String file : listSuggestionFileName) {
+            for (String file : lstSuggestionFileName) {
                 Log.e(TAG, "File not exist: " + getFilePath(uri, file));
             }
             response = chain.proceed(chain.request());
         }
-
-        Log.d(TAG, "<-- END [" + method.toUpperCase() + "]" + uri.toString());
         return response;
     }
 
