@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
     @Override
     public void displayHorizontalListData(List<Data1> lstData) {
-        Toast.makeText(getApplicationContext(), "Refresh", Toast.LENGTH_LONG).show();
         mHorizontalAdapter.setData(lstData);
     }
 
