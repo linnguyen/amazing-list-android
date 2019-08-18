@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/thumbnail"
             android:ellipsize="end"
-            android:lines="2"
+            android:maxLines="2"
             android:textColor="@color/text_color"
             android:textStyle="bold" />
     </RelativeLayout>
