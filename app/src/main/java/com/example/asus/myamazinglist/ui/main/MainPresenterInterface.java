@@ -4,4 +4,8 @@ public interface MainPresenterInterface {
     void getDataForHorizontalList();
 
     void getDataForVerticalList();
+
+    void subscribe();
+
+    void unSubscribe();
 }

@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
 
         presenter = new MainPresenter(getApplicationContext(), this);
 
+        setupViews();
+
+        //get mock data from json file
+        getData();
+    }
+
+    private void setupViews() {
         toolbar = findViewById(R.id.toolbar);
         rcvVertical = findViewById(R.id.rcv_vertical);
         rcvHorizontal = findViewById(R.id.rcv_horizontal);
@@ -44,13 +51,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         mHorizontalAdapter = new DataHorizontalAdapter(getApplicationContext(), this);
 
         rcvVertical.setLayoutManager(new LinearLayoutManager(this));
-        rcvHorizontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
         rcvVertical.setAdapter(mVerticalAdapter);
-        rcvHorizontal.setAdapter(mHorizontalAdapter);
 
-        //get mock data from json file
-        getData();
+        rcvHorizontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcvHorizontal.setAdapter(mHorizontalAdapter);
     }
 
     @Override
@@ -94,5 +98,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.unSubscribe();
     }
 }

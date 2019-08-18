@@ -21,8 +21,8 @@ import okhttp3.ResponseBody;
 public class FakeInterceptor implements Interceptor {
     private static final String TAG = FakeInterceptor.class.getSimpleName();
     private static final String FILE_EXTENSION = ".json";
-    private Context mContext;
 
+    private Context mContext;
     private String mContentType = "application/json";
 
     public FakeInterceptor(Context context) {
@@ -42,7 +42,6 @@ public class FakeInterceptor implements Interceptor {
         Response response = null;
         // get request URI.
         final URI uri = chain.request().url().uri();
-        Log.d(TAG, "--> Request url: [" + method.toUpperCase() + "]" + uri.toString());
 
         String defaultFileName = getFileName(chain);
 
@@ -92,7 +91,7 @@ public class FakeInterceptor implements Interceptor {
         String mockDataPath = uri.getHost() + uri.getPath();
         mockDataPath = mockDataPath.substring(0, mockDataPath.lastIndexOf('/'));
         Log.d(TAG, "Scan files in: " + mockDataPath);
-        //List all files in folder
+        //list all files in folder
         String[] files = mContext.getAssets().list(mockDataPath);
         for (String fileName : inputFileNames) {
             if (fileName != null) {

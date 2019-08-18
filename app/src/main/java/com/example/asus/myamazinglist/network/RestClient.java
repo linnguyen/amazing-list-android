@@ -3,6 +3,7 @@ package com.example.asus.myamazinglist.network;
 import android.content.Context;
 
 import com.example.asus.myamazinglist.mock.FakeInterceptor;
+import com.example.asus.myamazinglist.utils.Constants;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -22,7 +23,7 @@ public final class RestClient {
 
             final Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://mock.api")
+                    .baseUrl(Constants.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(client)

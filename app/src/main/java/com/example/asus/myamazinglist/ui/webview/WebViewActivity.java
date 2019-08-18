@@ -25,10 +25,23 @@ public class WebViewActivity extends AppCompatActivity implements WebViewViewInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-        toolbar = findViewById(R.id.toolbar);
-        webView = findViewById(R.id.web_view);
 
         presenter = new WebViewPresenter(this);
+
+        setupViews();
+
+        if (getIntent().hasExtra(Constants.ARG_DATA)) {
+            data1 = getIntent().getParcelableExtra(Constants.ARG_DATA);
+            query = data1.getDescription();
+        }
+
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://www.google.com/search?q=" + query);
+    }
+
+    private void setupViews() {
+        toolbar = findViewById(R.id.toolbar);
+        webView = findViewById(R.id.web_view);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -42,13 +55,5 @@ public class WebViewActivity extends AppCompatActivity implements WebViewViewInt
                 finish();
             }
         });
-
-        if (getIntent().hasExtra(Constants.ARG_DATA)) {
-            data1 = getIntent().getParcelableExtra(Constants.ARG_DATA);
-            query = data1.getDescription();
-        }
-
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.google.com/search?q=" + query);
     }
 }

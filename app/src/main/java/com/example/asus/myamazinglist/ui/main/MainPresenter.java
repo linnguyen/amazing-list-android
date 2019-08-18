@@ -37,7 +37,7 @@ public class MainPresenter implements MainPresenterInterface {
         // adding observable to the disposable
         compositeDisposable.add((Disposable) getHorizontalDataObservable()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<List<Data1>>() {
                     @Override
                     public void onComplete() {
@@ -62,7 +62,7 @@ public class MainPresenter implements MainPresenterInterface {
         // adding observable to the disposable
         compositeDisposable.add((Disposable) getVerticalDataObservable()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<List<Data2>>() {
                     @Override
                     public void onComplete() {
@@ -80,6 +80,18 @@ public class MainPresenter implements MainPresenterInterface {
                         mvi.displayVerticalListData(lstData);
                     }
                 }));
+    }
+
+    @Override
+    public void subscribe() {
+
+    }
+
+    @Override
+    public void unSubscribe() {
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
     }
 
     private Observable getHorizontalDataObservable() {
